@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width,initial-scale=1" name="viewport"/>
+  <meta content="#123c3a" name="theme-color"/>
+  <title>
+   Page &amp; Pine | Find Your Next Favourite
+  </title>
+  <style>
+   :root{
+  --wine:#42152b;
+  --plum:#6b2948;
+  --rose:#f4d9df;
+  --gold:#d9b45b;
+  --paper:#faf5ee;
+  --ink:#2b2023;
+  --muted:#776a6b;
+  --line:#e8dcd8;
+  --white:#fff}
+*{
+  box-sizing:border-box}
+html{
+  scroll-behavior:smooth;
+  scroll-padding-top:85px}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font:16px/1.6 Inter,system-ui,sans-serif}
+a{
+  color:inherit;
+  text-decoration:none}
+button,input,select{
+  font:inherit}
+.wrap{
+  width:min(1160px,calc(100% - 40px));
+  margin:auto}
+.topline{
+  background:var(--wine);
+  color:#f9e8eb;
+  font-size:12px;
+  text-align:center;
+  padding:8px}
+.header{
+  background:var(--paper);
+  border-bottom:1px solid var(--line);
+  position:sticky;
+  top:0;
+  z-index:10}
+.header .wrap{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:18px;
+  padding:16px 0}
+.brand{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  color:var(--wine);
+  font:700 25px Georgia,serif}
+.brandmark{
+  width:41px;
+  height:41px;
+  background:var(--wine);
+  color:var(--gold);
+  display:grid;
+  place-items:center;
+  border-radius:12px;
+  font-size:22px}
+.nav{
+  display:flex;
+  gap:22px;
+  font-size:13px;
+  font-weight:700}
+.nav a:hover{
+  color:var(--plum)}
+.header-tools{
+  display:flex;
+  align-items:center;
+  gap:10px}
+.search{
+  display:flex;
+  border:1px solid var(--line);
+  border-radius:9px;
+  overflow:hidden;
+  background:white}
+.search input{
+  border:0;
+  padding:10px 12px;
+  width:160px;
+  min-width:0;
+  outline:none}
+.search button{
+  border:0;
+  background:var(--rose);
+  color:var(--wine);
+  padding:0 12px;
+  cursor:pointer}
+.cart{
+  border:0;
+  border-radius:9px;
+  background:var(--wine);
+  color:white;
+  padding:11px 13px;
+  font-weight:800;
+  cursor:pointer}
+.cart span{
+  display:inline-grid;
+  place-items:center;
+  background:var(--gold);
+  color:var(--wine);
+  width:21px;
+  height:21px;
+  border-radius:50%;
+  font-size:11px;
+  margin-left:5px}
+.menu{
+  display:none;
+  background:transparent;
+  border:1px solid var(--line);
+  padding:8px;
+  border-radius:8px}
+.hero{
+  background:var(--rose);
+  overflow:hidden}
+.hero .wrap{
+  display:grid;
+  grid-template-columns:1.05fr .95fr;
+  gap:40px;
+  align-items:center;
+  padding:68px 0}
+.eyebrow{
+  font-size:11px;
+  text-transform:uppercase;
+  letter-spacing:.17em;
+  font-weight:900;
+  color:var(--plum)}
+h1{
+  font:600 clamp(42px,5.5vw,68px)/1.03 Georgia,serif;
+  letter-spacing:-.04em;
+  color:var(--wine);
+  margin:14px 0 20px}
+.hero p{
+  font-size:18px;
+  color:#6c4b57;
+  max-width:500px}
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  border:0;
+  border-radius:8px;
+  background:var(--wine);
+  color:white;
+  font-weight:800;
+  padding:13px 18px;
+  cursor:pointer}
+.btn:hover{
+  background:var(--plum)}
+.btn.gold{
+  background:var(--gold);
+  color:var(--wine)}
+.actions{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+  margin:26px 0}
+.hero-small{
+  font-size:12px!important;
+  color:#7b5c66!important}
+.book-display{
+  min-height:355px;
+  position:relative;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:0}
+.book{
+  width:150px;
+  height:220px;
+  border-radius:4px 11px 11px 4px;
+  box-shadow:12px 20px 25px #41162b2a;
+  position:relative;
+  padding:20px 14px;
+  color:white;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  border-left:8px solid #0002;
+  transform:rotate(-9deg);
+  z-index:2}
+.book:nth-child(2){
+  transform:rotate(5deg) translateY(-16px);
+  z-index:3;
+  margin-left:-20px;
+  background:#d7b66a!important;
+  color:var(--wine)}
+.book:nth-child(3){
+  transform:rotate(13deg) translateY(20px);
+  z-index:1;
+  margin-left:-22px}
+.book small{
+  font-size:9px;
+  letter-spacing:.14em}
+.book strong{
+  font:700 25px/1.05 Georgia,serif}
+.book em{
+  font-size:10px}
+.round-note{
+  position:absolute;
+  bottom:0;
+  right:5%;
+  background:var(--wine);
+  color:white;
+  border-radius:50%;
+  width:92px;
+  height:92px;
+  display:grid;
+  place-items:center;
+  text-align:center;
+  font-size:12px;
+  font-weight:800;
+  transform:rotate(10deg);
+  z-index:4;
+  border:5px solid var(--rose)}
+.trust{
+  background:white;
+  border-bottom:1px solid var(--line)}
+.trust .wrap{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:20px;
+  padding:20px 0}
+.trust-item{
+  display:flex;
+  align-items:center;
+  gap:12px}
+.trust-item b{
+  display:block;
+  font-size:13px;
+  color:var(--wine)}
+.trust-item small{
+  display:block;
+  color:var(--muted);
+  font-size:11px}
+.trust-icon{
+  font-size:24px}
+.section{
+  padding:74px 0}
+.section-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:end;
+  gap:20px;
+  margin-bottom:27px}
+.section h2{
+  font:600 clamp(30px,4vw,43px)/1.1 Georgia,serif;
+  color:var(--wine);
+  margin:8px 0}
+.section-head p{
+  max-width:460px;
+  color:var(--muted);
+  margin:0}
+.filters{
+  display:flex;
+  gap:9px;
+  flex-wrap:wrap;
+  margin-bottom:22px}
+.filter{
+  border:1px solid var(--line);
+  border-radius:30px;
+  padding:9px 15px;
+  background:white;
+  color:var(--wine);
+  font-size:13px;
+  font-weight:800;
+  cursor:pointer}
+.filter.active,.filter:hover{
+  background:var(--wine);
+  color:white;
+  border-color:var(--wine)}
+.book-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:16px}
+.book-card{
+  background:white;
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:15px;
+  transition:.2s;
+  display:flex;
+  flex-direction:column}
+.book-card:hover{
+  transform:translateY(-4px);
+  box-shadow:0 15px 35px #42152b12}
+.cover{
+  height:205px;
+  border-radius:8px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  padding:17px;
+  color:white;
+  box-shadow:inset 7px 0 #0002;
+  position:relative;
+  overflow:hidden}
+.cover:after{
+  content:"";
+  position:absolute;
+  width:160px;
+  height:160px;
+  border:1px solid #ffffff40;
+  border-radius:50%;
+  right:-70px;
+  bottom:-65px}
+.cover small{
+  font-size:9px;
+  letter-spacing:.13em}
+.cover strong{
+  font:700 27px/1.04 Georgia,serif;
+  max-width:8ch;
+  z-index:1}
+.cover em{
+  font-size:10px;
+  z-index:1}
+.book-info{
+  padding:15px 2px 2px;
+  display:flex;
+  flex-direction:column;
+  flex:1}
+.category{
+  font-size:10px;
+  text-transform:uppercase;
+  letter-spacing:.1em;
+  color:var(--plum);
+  font-weight:900}
+.book-info h3{
+  font:700 18px/1.2 Georgia,serif;
+  color:var(--wine);
+  margin:7px 0 4px}
+.author{
+  font-size:12px;
+  color:var(--muted)}
+.price-row{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-top:auto;
+  padding-top:15px;
+  gap:8px}
+.price{
+  font-weight:900;
+  color:var(--wine)}
+.add{
+  background:var(--rose);
+  border:0;
+  border-radius:8px;
+  color:var(--wine);
+  font-weight:900;
+  padding:9px 11px;
+  cursor:pointer}
+.add:hover{
+  background:var(--gold)}
+.empty{
+  padding:35px;
+  text-align:center;
+  background:white;
+  border:1px dashed var(--line);
+  border-radius:14px;
+  color:var(--muted);
+  grid-column:1/-1}
+.story{
+  background:var(--wine);
+  color:white}
+.story .wrap{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:45px;
+  align-items:center;
+  padding-top:65px;
+  padding-bottom:65px}
+.story h2{
+  font:600 clamp(32px,4vw,46px)/1.1 Georgia,serif;
+  color:white}
+.story p{
+  color:#e6cbd5}
+.story-art{
+  min-height:260px;
+  background:linear-gradient(135deg,#73314f,#2a1020);
+  border:1px solid #ffffff25;
+  border-radius:20px;
+  display:grid;
+  place-items:center;
+  position:relative;
+  overflow:hidden}
+.story-art:before,.story-art:after{
+  content:"";
+  position:absolute;
+  width:220px;
+  height:220px;
+  border:1px solid #ffffff22;
+  border-radius:50%}
+.story-art:after{
+  width:300px;
+  height:300px}
+.story-art span{
+  font:700 62px Georgia,serif;
+  color:var(--gold);
+  z-index:1}
+.newsletter{
+  background:#f0e3d9}
+.newsletter .wrap{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:25px;
+  padding-top:38px;
+  padding-bottom:38px}
+.newsletter h2{
+  font:600 28px Georgia,serif;
+  color:var(--wine);
+  margin:0}
+.newsletter p{
+  margin:4px 0 0;
+  color:var(--muted);
+  font-size:13px}
+.newsletter form{
+  display:flex;
+  gap:8px;
+  max-width:460px;
+  width:100%}
+.newsletter input{
+  min-width:0;
+  flex:1;
+  padding:12px;
+  border:1px solid #dccac5;
+  border-radius:8px}
+.footer{
+  background:#2b0d1c;
+  color:#e8d8de;
+  padding:42px 0 20px}
+.footer-grid{
+  display:grid;
+  grid-template-columns:1.4fr 1fr 1fr;
+  gap:30px}
+.footer h3{
+  color:white;
+  font:700 22px Georgia,serif}
+.footer a{
+  display:block;
+  font-size:13px;
+  margin:7px 0}
+.bottom{
+  border-top:1px solid #ffffff24;
+  margin-top:25px;
+  padding-top:18px;
+  font-size:12px;
+  color:#c7aeb9}
+.toast{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  background:var(--wine);
+  color:white;
+  padding:13px 18px;
+  border-radius:10px;
+  box-shadow:0 10px 35px #0002;
+  z-index:20;
+  max-width:calc(100% - 40px);
+  display:none}
+.toast.show{
+  display:block}
+@media(max-width:900px){
+  .nav{
+  display:none;
+  position:absolute;
+  top:100%;
+  left:0;
+  right:0;
+  background:var(--paper);
+  padding:18px 22px;
+  border-bottom:1px solid var(--line)}
+.nav.open{
+  display:grid;
+  gap:13px}
+.menu{
+  display:block}
+.header .wrap{
+  flex-wrap:wrap}
+.search input{
+  width:125px}
+.hero .wrap{
+  grid-template-columns:1fr;
+  padding:50px 0}
+.book-display{
+  min-height:300px}
+.book-grid{
+  grid-template-columns:repeat(3,1fr)}
+.trust .wrap{
+  grid-template-columns:repeat(2,1fr)}
+.story .wrap{
+  grid-template-columns:1fr}
+.newsletter .wrap{
+  align-items:flex-start;
+  flex-direction:column}
+}
+@media(max-width:600px){
+  .wrap{
+  width:calc(100% - 28px)}
+.brand{
+  font-size:21px}
+.header .wrap{
+  gap:10px}
+.search{
+  order:3;
+  width:100%}
+.search input{
+  flex:1;
+  width:auto}
+.hero h1{
+  font-size:48px}
+.book-grid{
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:10px}
+.cover{
+  height:170px;
+  padding:12px}
+.cover strong{
+  font-size:22px}
+.book-card{
+  padding:10px}
+.book-info h3{
+  font-size:16px}
+.section{
+  padding:52px 0}
+.section-head{
+  display:block}
+.section-head p{
+  margin-top:10px}
+.trust .wrap{
+  gap:15px}
+.trust-item{
+  align-items:flex-start}
+.trust-icon{
+  font-size:20px}
+.newsletter form{
+  flex-direction:column}
+.footer-grid{
+  grid-template-columns:1fr}
+.book-display{
+  transform:scale(.88);
+  margin:0 -20px}
+.story .wrap{
+  padding-top:48px;
+  padding-bottom:48px}
+}
+/* Footer creator credit */
+.creator-credit {
+   margin-top: 1.25rem;
+   padding-top: 1rem;
+   border-top: 1px solid rgba(127,127,127,.28);
+   text-align: center;
+   font-weight: 700;
+   letter-spacing: .08em;
+   font-size: .9rem;
+   }
+  
+/* Page & Pine visual refresh */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700;800&display=swap');
+:root{
+  --wine:#123c3a;
+  --plum:#28645a;
+  --rose:#dceee7;
+  --gold:#d7b66a;
+  --paper:#f7f6ef;
+  --ink:#203330;
+  --muted:#687a73;
+  --line:#dce5dd;
+  --white:#fff;
+}
+body{font-family:'DM Sans',system-ui,sans-serif;background:linear-gradient(180deg,#fbfaf5 0%,#f3f6ef 100%);color:var(--ink)}
+.topline{background:#123c3a;color:#f1f5e9;letter-spacing:.08em}
+.header{background:rgba(250,250,244,.96);backdrop-filter:blur(12px);box-shadow:0 5px 22px rgba(18,60,58,.05)}
+.brand{font-family:'Playfair Display',Georgia,serif;color:#123c3a;letter-spacing:-.03em}
+.brandmark{background:linear-gradient(145deg,#123c3a,#34796b);color:#f2dca2;border-radius:14px;box-shadow:0 7px 16px rgba(18,60,58,.2)}
+.nav a{transition:color .2s ease}
+.nav a:hover{color:#b1843d}
+.search{border-radius:999px;border-color:#d8e4dc}
+.search button{background:#dceee7;color:#123c3a}
+.cart{background:#123c3a;border-radius:999px;box-shadow:0 5px 14px rgba(18,60,58,.15)}
+.hero{background:radial-gradient(circle at 82% 20%,rgba(255,255,255,.82),transparent 28%),linear-gradient(125deg,#e4f0e7 0%,#d4e9df 48%,#f3ead5 100%)}
+.hero h1,.section h2,.newsletter h2,.book-info h3,.footer h3{font-family:'Playfair Display',Georgia,serif}
+.hero h1{color:#123c3a}
+.hero p{color:#4e6b61}
+.eyebrow{color:#36776a}
+.btn{background:#123c3a;border-radius:999px;box-shadow:0 7px 16px rgba(18,60,58,.13);transition:transform .2s ease,box-shadow .2s ease,background .2s ease}
+.btn:hover{background:#28645a;transform:translateY(-2px);box-shadow:0 10px 20px rgba(18,60,58,.18)}
+.btn.gold{background:#d7b66a;color:#173b35}
+.book{box-shadow:12px 20px 28px rgba(20,55,48,.24);border-radius:5px 12px 12px 5px}
+.round-note{background:#123c3a;border-color:#dceee7;box-shadow:0 8px 18px rgba(18,60,58,.15)}
+.trust{background:#fffefa}
+.trust-item b{color:#123c3a}
+.trust-icon{color:#b1843d}
+.section h2{color:#123c3a}
+.filter{border-color:#d5e3da;color:#24584f;border-radius:999px}
+.filter.active,.filter:hover{background:#123c3a;border-color:#123c3a}
+.book-card{border:1px solid #e0e8df;border-radius:17px;background:rgba(255,255,252,.94);box-shadow:0 4px 14px rgba(27,65,55,.035);transition:transform .25s ease,box-shadow .25s ease}
+.book-card:hover{transform:translateY(-6px);box-shadow:0 16px 34px rgba(27,65,55,.12)}
+.cover{border-radius:11px;box-shadow:inset 7px 0 rgba(0,0,0,.12),0 7px 15px rgba(20,55,48,.1)}
+.cover strong{font-family:'Playfair Display',Georgia,serif}
+.category{color:#36776a}
+.book-info h3{color:#173f39}
+.price{color:#24584f}
+.add{background:#dceee7;color:#174a40;border-radius:999px;transition:background .2s ease,transform .2s ease}
+.add:hover{background:#d7b66a;transform:translateY(-1px)}
+.story{background:radial-gradient(circle at 85% 20%,#28645a 0%,transparent 32%),linear-gradient(120deg,#123c3a,#102e2d);position:relative}
+.story-art{background:radial-gradient(circle at 50% 50%,#397b6b,#173f3a 68%);border-radius:24px}
+.story-art span{font-family:'Playfair Display',Georgia,serif;color:#e5c77e}
+.newsletter{background:linear-gradient(110deg,#e8f1e8,#f4ead7)}
+.newsletter h2{color:#123c3a}
+.newsletter input{border:1px solid #d4e0d5;border-radius:999px;background:#fffefa;padding:13px 17px}
+.footer{background:#102e2d;color:#dce9df}
+.footer h3{color:#f4e6c6}
+.footer a:hover{color:#e2c47c}
+.bottom{border-color:rgba(255,255,255,.16);color:#bdcec3}
+.toast{background:#123c3a;border:1px solid rgba(255,255,255,.12);border-radius:13px}
+.empty{border-color:#cbded1;border-radius:16px;background:#fffefa}
+@media(max-width:900px){.nav{background:#fbfaf5}}
+
+  </style>
+ </head>
+ <body>
+  <div class="topline">
+   A LITTLE ESCAPE, A NEW IDEA, A WHOLE NEW WORLD &mdash; FIND IT HERE.
+  </div>
+  <header class="header">
+   <div class="wrap">
+    <a class="brand" href="#home">
+     <span class="brandmark">
+      B
+     </span>
+     Page &amp; Pine
+    </a>
+    <nav class="nav" id="nav">
+     <a href="#discover">
+      Discover
+     </a>
+     <a href="#bestsellers">
+      Book shelf
+     </a>
+     <a href="#story">
+      Our story
+     </a>
+     <a href="#newsletter">
+      Reading club
+     </a>
+    </nav>
+    <div class="header-tools">
+     <form class="search" id="searchForm" role="search">
+      <input aria-label="Search books" id="searchInput" placeholder="Search books..."/>
+      <button aria-label="Search" type="submit">
+       &telrec;
+      </button>
+     </form>
+     <button class="cart" id="cartBtn">
+      Bag
+      <span id="cartCount">
+       0
+      </span>
+     </button>
+     <button aria-expanded="false" class="menu" id="menuBtn">
+      ☰
+     </button>
+    </div>
+   </div>
+  </header>
+  <main id="home">
+   <section class="hero">
+    <div class="wrap">
+     <div>
+      <span class="eyebrow">
+       The independent reader's corner
+      </span>
+      <h1>
+       Stories that
+       <br/>
+       stay with
+       <i>
+        you.
+       </i>
+      </h1>
+      <p>
+       From page-turning fiction to ideas that change how you see the world, find your next favourite in a thoughtfully curated digital bookshop.
+      </p>
+      <div class="actions">
+       <a class="btn" href="#bestsellers">
+        Browse the shelf &searrow;
+       </a>
+       <a class="btn gold" href="#newsletter">
+        Join reading club
+       </a>
+      </div>
+      <p class="hero-small">
+       Demo storefront &middot; Add books to your bag to test the shopping interactions.
+      </p>
+     </div>
+     <div class="book-display">
+      <div class="book" style="background:#28645a">
+       <small>
+        PAGE &amp; PINE EDITIONS
+       </small>
+       <strong>
+        The
+        <br/>
+        Quiet
+        <br/>
+        Garden
+       </strong>
+       <em>
+        A novel of becoming
+       </em>
+      </div>
+      <div class="book" style="background:#d7b66a">
+       <small>
+        IDEAS / ESSAYS
+       </small>
+       <strong>
+        Small
+        <br/>
+        Worlds
+       </strong>
+       <em>
+        Make room for wonder
+       </em>
+      </div>
+      <div class="book" style="background:#345c70">
+       <small>
+        THE FIELD NOTES
+       </small>
+       <strong>
+        Future
+        <br/>
+        Thinking
+       </strong>
+       <em>
+        Curiosity, collected
+       </em>
+      </div>
+      <div class="round-note">
+       GOOD BOOKS
+       <br/>
+       GOOD COMPANY
+      </div>
+     </div>
+    </div>
+   </section>
+   <div class="trust">
+    <div class="wrap">
+     <div class="trust-item">
+      <span class="trust-icon">
+       ✦
+      </span>
+      <span>
+       <b>
+        Thoughtfully picked
+       </b>
+       <small>
+        Curated reading lists
+       </small>
+      </span>
+     </div>
+     <div class="trust-item">
+      <span class="trust-icon">
+       ♧
+      </span>
+      <span>
+       <b>
+        Readers first
+       </b>
+       <small>
+        Easy discovery
+       </small>
+      </span>
+     </div>
+     <div class="trust-item">
+      <span class="trust-icon">
+       &nearrow;
+      </span>
+      <span>
+       <b>
+        Find a new voice
+       </b>
+       <small>
+        Fresh perspectives
+       </small>
+      </span>
+     </div>
+     <div class="trust-item">
+      <span class="trust-icon">
+       ♡
+      </span>
+      <span>
+       <b>
+        Made for book lovers
+       </b>
+       <small>
+        A shelf to return to
+       </small>
+      </span>
+     </div>
+    </div>
+   </div>
+   <section class="section" id="discover">
+    <div class="wrap">
+     <div class="section-head">
+      <div>
+       <span class="eyebrow">
+        A shelf for every mood
+       </span>
+       <h2>
+        What are you in the mood for?
+       </h2>
+      </div>
+      <p>
+       Choose a genre to narrow the collection, or search by title, author or topic.
+      </p>
+     </div>
+     <div class="filters" id="filters">
+      <button class="filter active" data-category="All">
+       All books
+      </button>
+      <button class="filter" data-category="Fiction">
+       Fiction
+      </button>
+      <button class="filter" data-category="Mind &amp; Life">
+       Mind &amp; Life
+      </button>
+      <button class="filter" data-category="Technology">
+       Technology
+      </button>
+      <button class="filter" data-category="Mystery">
+       Mystery
+      </button>
+      <button class="filter" data-category="Poetry">
+       Poetry
+      </button>
+     </div>
+    </div>
+   </section>
+   <section class="section" id="bestsellers" style="padding-top:0">
+    <div class="wrap">
+     <div class="section-head">
+      <div>
+       <span class="eyebrow">
+        The Page &amp; Pine edit
+       </span>
+       <h2>
+        Popular on the shelf
+       </h2>
+      </div>
+      <span id="resultCount" style="font-size:13px;color:var(--muted)">
+       8 books
+      </span>
+     </div>
+     <div class="book-grid" id="bookGrid">
+     </div>
+    </div>
+   </section>
+   <section class="story" id="story">
+    <div class="wrap">
+     <div>
+      <span class="eyebrow" style="color:var(--gold)">
+       A note from Page &amp; Pine
+      </span>
+      <h2>
+       For the love of getting lost in a good book.
+      </h2>
+      <p>
+       We believe a bookshop is more than a list of titles. It's a place to stumble into a new idea, revisit an old favourite and discover a voice you didn't know you needed.
+      </p>
+      <a class="btn gold" href="#newsletter">
+       Find your reading rhythm &rarr;
+      </a>
+     </div>
+     <div class="story-art">
+      <span>
+       Read
+       <br/>
+       between
+       <br/>
+       worlds.
+      </span>
+     </div>
+    </div>
+   </section>
+   <section class="newsletter" id="newsletter">
+    <div class="wrap">
+     <div>
+      <h2>
+       Letters for curious readers.
+      </h2>
+      <p>
+       Occasional reading picks, new discoveries and bookish inspiration.
+      </p>
+     </div>
+     <form id="newsletterForm">
+      <input aria-label="Your email address" id="newsletterEmail" placeholder="Your email address" required="" type="email"/>
+      <button class="btn" type="submit">
+       Join the list &nearrow;
+      </button>
+     </form>
+    </div>
+   </section>
+  </main>
+  <footer class="footer">
+   <div class="wrap">
+    <div class="footer-grid">
+     <div>
+      <h3>
+       Page &amp; Pine
+      </h3>
+      <p>
+       A concept digital bookstore for readers, collectors and curious minds.
+      </p>
+     </div>
+     <div>
+      <h3>
+       Explore
+      </h3>
+      <a href="#discover">
+       Browse genres
+      </a>
+      <a href="#bestsellers">
+       Popular books
+      </a>
+      <a href="#story">
+       Our story
+      </a>
+     </div>
+     <div>
+      <h3>
+       Your account
+      </h3>
+      <a href="#bestsellers">
+       Shopping bag
+      </a>
+      <a href="#newsletter">
+       Reading club
+      </a>
+      <a href="#home">
+       Back to top &uarr;
+      </a>
+     </div>
+    </div>
+    <div class="bottom">
+     Demo storefront only. Sample titles and prices are illustrative; checkout and payment processing are not enabled.
+    </div>
+   </div>
+   <div class="creator-credit">
+    Created by Tanya Sukhani
+   </div>
+  </footer>
+  <div aria-live="polite" class="toast" id="toast" role="status">
+  </div>
+  <script>
+   const books=[{id:1,title:'The Quiet Garden',author:'Mira Ellison',category:'Fiction',price:349,color:'#28645a',tag:'A novel of becoming'},{id:2,title:'Small Worlds',author:'A. R. Sen',category:'Mind & Life',price:429,color:'#c39b52',tag:'Make room for wonder'},{id:3,title:'Future Thinking',author:'Dev Malhotra',category:'Technology',price:599,color:'#345c70',tag:'Ideas for tomorrow'},{id:4,title:'The Last Lantern',author:'N. Kapoor',category:'Mystery',price:379,color:'#8b5d53',tag:'A mystery in the rain'},{id:5,title:'Blue Hour Poems',author:'Leena Das',category:'Poetry',price:299,color:'#547b83',tag:'A collection of small moments'},{id:6,title:'A Map of Elsewhere',author:'R. Wren',category:'Fiction',price:449,color:'#a16e50',tag:'Journeys and homecomings'},{id:7,title:'Better Questions',author:'Ishaan Rao',category:'Mind & Life',price:499,color:'#657b59',tag:'A guide to deeper thinking'},{id:8,title:'Signal & Noise',author:'Tara Mehta',category:'Technology',price:549,color:'#5b647d',tag:'Seeing patterns in a data world'}];
+  let category='All',query='',cart=[];
+  const grid=document.getElementById('bookGrid'),toast=document.getElementById('toast');
+  function notify(msg){toast.textContent=msg;
+  toast.classList.add('show');
+  clearTimeout(notify.timer);
+  notify.timer=setTimeout(()=>toast.classList.remove('show'),2600)}function render(){const shown=books.filter(b=>(category==='All'||b.category===category)&&[b.title,b.author,b.category,b.tag].join(' ').toLowerCase().includes(query.toLowerCase()));
+  document.getElementById('resultCount').textContent=shown.length+' book'+(shown.length===1?'':'s');
+  grid.innerHTML='';
+  if(!shown.length){grid.innerHTML='<div class="empty">No books match that search. Try another title or genre.</div>';
+  return}shown.forEach(b=>{const card=document.createElement('article');card.className='book-card';card.innerHTML='<div class="cover" style="background:'+b.color+'"><small>PAGE &amp; PINE / SELECT</small><strong></strong><em></em></div><div class="book-info"><span class="category"></span><h3></h3><div class="author"></div><div class="price-row"><span class="price"></span><button class="add">+ Add</button></div></div>';card.querySelector('.cover strong').textContent=b.title;card.querySelector('.cover em').textContent=b.tag;card.querySelector('.category').textContent=b.category;card.querySelector('h3').textContent=b.title;card.querySelector('.author').textContent='by '+b.author;card.querySelector('.price').textContent='₹'+b.price;card.querySelector('.add').addEventListener('click',()=>{cart.push(b);updateCart();notify('Added “'+b.title+'” to your bag.')});grid.appendChild(card)})}function updateCart(){document.getElementById('cartCount').textContent=cart.length}document.querySelectorAll('.filter').forEach(btn=>btn.addEventListener('click',()=>{category=btn.dataset.category;document.querySelectorAll('.filter').forEach(b=>b.classList.toggle('active',b===btn));render()}));
+  document.getElementById('searchForm').addEventListener('submit',e=>{e.preventDefault();query=document.getElementById('searchInput').value.trim();render();document.getElementById('bestsellers').scrollIntoView({behavior:'smooth'})});
+  document.getElementById('searchInput').addEventListener('input',e=>{query=e.target.value.trim();render()});
+  document.getElementById('cartBtn').addEventListener('click',()=>{if(!cart.length){notify('Your bag is empty. Add a book to get started.');return}const total=cart.reduce((sum,b)=>sum+b.price,0);notify('Your bag: '+cart.length+' item(s) · ₹'+total+' total. Demo checkout is disabled.')});
+  document.getElementById('newsletterForm').addEventListener('submit',e=>{e.preventDefault();notify('You’re on the demo reading-club list for this session. No email was sent.');e.target.reset()});
+  const menuBtn=document.getElementById('menuBtn'),nav=document.getElementById('nav');
+  menuBtn.addEventListener('click',()=>{const open=nav.classList.toggle('open');menuBtn.setAttribute('aria-expanded',String(open))});
+  nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('open');menuBtn.setAttribute('aria-expanded','false')}));
+  render();
+  </script>
+ </body>
+</html>
